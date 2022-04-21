@@ -17,7 +17,7 @@ class PostQuerySet(models.QuerySet):
         Can be used to avoid QuerySet runaway if previous 
         Query contains annotation/aggregation'''
 
-        posts = self.all()
+        posts = self
         posts_ids = [post.id for post in posts]
         comments_count_for_id = dict(
             Post.objects.filter(id__in=posts_ids)
